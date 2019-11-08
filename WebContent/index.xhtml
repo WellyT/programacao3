@@ -7,48 +7,23 @@ xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head> 
 <h:body> 
+	<p:tabMenu activeIndex="#{param.i}">
+		<p:menuitem value="Inicio" outcome="/index.xhtml" icon="pi pi-star">
+			<f:param name="i" value="0" />
+		</p:menuitem>
+		<p:menuitem value="Estoque" outcome="/produto.xhtml" icon="pi pi-search">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+ <p:menuitem value="Fornecedores" outcome="/fornecedor.xhtml" icon="pi pi-user">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+	</p:tabMenu>
+
+	<h1>Hello World!</h1>
+	<h2>How you doin?</h2>
+	<h3>I'm waiting for your navigation!</h3>
+	<h2>I hope you enjoy the navigation!!</h2>
+
 	
-	<h:form id="form">
-	
-	
-		<p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
-		<br/>
-		<br/>
-		<p:messages closable="true" />
-		
-		<p:dataTable id="tabelaProdutos" value="#{ProdutoBean.listar()}" var="produto" >
-		<p:column style="text-align:center;"> 
-			<f:facet name="header">Nome</f:facet>
-			<p:outputLabel value="#{produto.nome}" />
-		</p:column>
-		
-		<p:column style="text-align: center;">
-			<f:facet name="header">Quantidade</f:facet>
-			<p:outputLabel value="#{produto.quantidade}" />
-		</p:column>
-		
-		<p:column style="text-align: center;" headerText="Editar">
-			<p:commandButton value="[ ! ]" action="#{ProdutoBean.load(produto)}" update=":form:tabelaProdutos"/>
-			</p:column>
-			
-			<p:column style="text-align: center;" headerText="Remover">
-				<p:commandButton value="[X]" action="#{ProdutoBean.remover(produto)}" update=":form:tabelaProdutos"/>
-			</p:column>
-		</p:dataTable>
-		
-			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-				Nome:
-			<p:inputText value="#{ProdutoBean.nome}" />
-			<br/>
-				Quantidade:
-			<p:inputNumber value="#{ProdutoBean.quantidade}" />
-				
-				<p:commandButton value="Salvar" action="#{ProdutoBean.cadastrar(p)}" update=":form" />
-</p:dialog> 
-		
-		
-		
-	
-	</h:form>
 </h:body> 
 </html>

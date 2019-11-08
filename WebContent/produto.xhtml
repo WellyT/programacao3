@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head> 
+<h:body> 
+
+	<p:tabMenu activeIndex="#{param.i}">
+		<p:menuitem value="Inicio" outcome="/index.xhtml" icon="pi pi-star">
+			<f:param name="i" value="0" />
+		</p:menuitem>
+		<p:menuitem value="Estoque" outcome="/produto.xhtml" icon="pi pi-search">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+ <p:menuitem value="Fornecedores" outcome="/fornecedor.xhtml" icon="pi pi-user">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+	</p:tabMenu>
+	
+	<br/>
+	
+	<h:form id="form">
+	
+		<p:commandButton value="Adicionar" type="button" onclick="PF('dlg2').show();" />
+		<br/>
+		<br/>
+		<p:messages closable="true" />
+		
+		<p:dataTable id="tabelaProdutos" value="#{ProdutoBean.listar()}" var="produto" >
+		<p:column style="text-align:center;"> 
+			<f:facet name="header">Nome</f:facet>
+			<p:outputLabel value="#{produto.nome}" />
+		</p:column>
+		
+		<p:column style="text-align: center;">
+			<f:facet name="header">Quantidade</f:facet>
+			<p:outputLabel value="#{produto.quantidade}" />
+		</p:column>
+		
+		<!--<p:column style="text-align: center;" headerText="Editar">
+			<p:commandButton value="[ ! ]" type="button" onclick="PF('dlg3').show();" action="#{ProdutoBean.load(produto)}" />
+			<p:dialog header="Modal Dialog" widgetVar="dlg3" modal="true" height="100">
+				Nome:
+					<p:inputText value="#{ProdutoBean.nome}" />
+			<br/>
+				Quantidade:
+					<p:inputNumber value="#{ProdutoBean.quantidade}" />
+				
+				<p:commandButton value="Salvar" action="#{ProdutoBean.load(produto)}" update=":form:tabelaProdutos" />
+				 <p:commandButton value="[ ! ]" action="#{ProdutoBean.load(p)}" update=":form:tabelaProdutos"/> 
+				</p:dialog> 
+				
+		</p:column>  -->
+			
+			<p:column style="text-align: center;" headerText="Remover">
+				<p:commandButton value="[X]" action="#{ProdutoBean.remover(produto)}" update=":form:tabelaProdutos"/>
+			</p:column>
+		</p:dataTable>
+		
+			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+				Nome:
+			<p:inputText value="#{ProdutoBean.nome}" />
+			<br/>
+				Quantidade:
+			<p:inputNumber value="#{ProdutoBean.quantidade}" />
+				
+				<p:commandButton value="Salvar" action="#{ProdutoBean.cadastrar(p)}" update=":form" />
+</p:dialog> 
+		
+		
+		
+	
+	</h:form>
+</h:body> 
+</html>
