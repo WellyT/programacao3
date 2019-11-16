@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import basicas.Fornecedor;
@@ -36,6 +38,10 @@ public class FornecedorBean implements Serializable{
 		this.nome=null;
 		this.cnpj=null;
 		this.endereco=null;
+		
+		FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO,"Produto inserido com sucesso",null);
+		FacesContext.getCurrentInstance().addMessage(null, mensagem);
+		
 		
 		return null;
 	}

@@ -65,7 +65,7 @@ xmlns:p="http://primefaces.org/ui">
 			</p:column>
 		</p:dataTable>
 		
-			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+			<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="150"  resizable="false">
 				Nome:
 			<p:inputText value="#{FornecedorBean.nome}" />
 			<br/>
@@ -74,7 +74,8 @@ xmlns:p="http://primefaces.org/ui">
 			<br/>
 				Endereço:
 			<p:inputText value="#{FornecedorBean.endereco}" />
-				
+	
+				<br/>
 				<p:commandButton value="Salvar" action="#{FornecedorBean.cadastrar(f)}" update=":form" />
 </p:dialog> 
 		

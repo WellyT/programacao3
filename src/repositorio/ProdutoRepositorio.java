@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import basicas.Produto;
 
@@ -12,12 +14,15 @@ public class ProdutoRepositorio {
 
 	private List<Produto> banco = new ArrayList<Produto>();
 		
+	@PersistenceContext(name = "Mysql")
+	private EntityManager manager;
+	
 	public void inserir(Produto produto) {
-			this.banco.add(produto);
+			this.manager.persist(produto);
 		}
 		
 	public void remover(Produto produto) {
-			this.banco.remove(produto);
+			this.manager.remove(produto);
 		}
 		
 	public List<Produto> listar() {
@@ -25,11 +30,19 @@ public class ProdutoRepositorio {
 		}
 
 	public List<Produto> getBanco() {
-		return banco;
+		return this.banco;
 	}
 
 	public void setBanco(List<Produto> banco) {
 		this.banco = banco;
+	}
+
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
 	}
 	
 	
