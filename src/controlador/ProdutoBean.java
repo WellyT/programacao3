@@ -37,7 +37,6 @@ public class ProdutoBean  implements Serializable {
 	public String cadastrar(Produto produto){
 		Produto p = new Produto();
 		p.setNome(this.nome);
-		p.setQuantidade(this.quantidade);
 		
 		this.repositorio.inserir(p);
 		this.nome = null;

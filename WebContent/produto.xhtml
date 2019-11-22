@@ -15,9 +15,7 @@ xmlns:p="http://primefaces.org/ui">
 		<p:menuitem value="Estoque" outcome="/produto.xhtml" icon="pi pi-search">
         <f:param name="i" value="1" />
     </p:menuitem>
- <p:menuitem value="Fornecedores" outcome="/fornecedor.xhtml" icon="pi pi-user">
-        <f:param name="i" value="2" />
-    </p:menuitem>
+
 	</p:tabMenu>
 	
 	<br/>
@@ -40,20 +38,6 @@ xmlns:p="http://primefaces.org/ui">
 			<p:outputLabel value="#{produto.quantidade}" />
 		</p:column>
 		
-		<!--<p:column style="text-align: center;" headerText="Editar">
-			<p:commandButton value="[ ! ]" type="button" onclick="PF('dlg3').show();" action="#{ProdutoBean.load(produto)}" />
-			<p:dialog header="Modal Dialog" widgetVar="dlg3" modal="true" height="100">
-				Nome:
-					<p:inputText value="#{ProdutoBean.nome}" />
-			<br/>
-				Quantidade:
-					<p:inputNumber value="#{ProdutoBean.quantidade}" />
-				
-				<p:commandButton value="Salvar" action="#{ProdutoBean.load(produto)}" update=":form:tabelaProdutos" />
-				 <p:commandButton value="[ ! ]" action="#{ProdutoBean.load(p)}" update=":form:tabelaProdutos"/> 
-				</p:dialog> 
-				
-		</p:column>  -->
 			
 			<p:column style="text-align: center;" headerText="Remover">
 				<p:commandButton value="[X]" action="#{ProdutoBean.remover(produto)}" update=":form:tabelaProdutos"/>
@@ -64,8 +48,6 @@ xmlns:p="http://primefaces.org/ui">
 				Nome:
 			<p:inputText value="#{ProdutoBean.nome}" />
 			<br/>
-				Quantidade:
-			<p:inputNumber value="#{ProdutoBean.quantidade}" />
 				
 				<p:commandButton value="Salvar" action="#{ProdutoBean.cadastrar(p)}" update=":form" />
 </p:dialog> 
